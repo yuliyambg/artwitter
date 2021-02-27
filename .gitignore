@@ -1,1 +1,4 @@
 .idea
+tmp/
+log/
+backend/artwitter_api/tmp/
