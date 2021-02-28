@@ -1,12 +1,15 @@
+
+const BASE_URL = "http://127.0.0.1:3000"
+
+// whether or not the form is showing
+let addArt = false;
+
 document.addEventListener("DOMContentLoaded", () => {
-  fetchArts()
-
-
-})
+  fetchArts();
+  showForm();
+});
 
 // read - fetch arts index
-  const BASE_URL = "http://127.0.0.1:3000"
-
 function fetchArts(){
   fetch(`${BASE_URL}/arts`)
       .then(resp => resp.json())
@@ -23,3 +26,24 @@ function fetchArts(){
   }
 
   // create - create new art
+// once form is submitted => fetch post to backend
+
+
+function showForm() {
+    // add art button
+    const addArtBtn = document.querySelector("#add-art");
+    // form to create art
+    const form = document.getElementById("form")
+
+    // shows art form on click
+    addArtBtn.addEventListener("click", () => {
+        addArt = !addArt;
+
+        if (addArt) {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
+    });
+
+}
