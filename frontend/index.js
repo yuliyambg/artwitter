@@ -63,6 +63,15 @@ function artFormSubmission(){
             artist_name: artist_name,
             image_url: image_url
         }
+        fetch(`${BASE_URL}/arts`, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(art)
+        })
+            .then(resp => console.log(resp))
 
     })
 
