@@ -12,5 +12,26 @@
 </head>
 <body>
 
+<div class="container">
+<h1 id="main-title">Artwitter</h1>
+    <button class="button" id="add-art" type="button" name="button">Click here to add new artwork</button>
+
+    <div class="form">
+        <form id="new-art-form" class="hidden">
+            <label>Title</label>
+            <input type="text" name="title"><br>
+            <label>Artist Name</label>
+            <input type="text" name="artist_name"><br>
+            <label>Image Link</label>
+            <input type="text" name="image_url"><br>
+            <input id="form-submit" type="submit" value="Add New Art">
+        </form>
+    </div>
+
+    <div id="art-card-container">
+    </div>
+
+</div>
+
 </body>
 </html>
