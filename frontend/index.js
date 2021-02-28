@@ -46,4 +46,24 @@ function showForm() {
         }
     });
 
+    artFormSubmission();
+}
+
+function artFormSubmission(){
+    //grabbing information from the form
+    const form = document.getElementById("form")
+    form.addEventListener("submit", () =>{
+        event.preventDefault()
+        let title = document.getElementById("title").value
+        let artist_name =document.getElementById("artist_name").value
+        let image_url = document.getElementById("image_url").value
+// console.log(title, artist_name, image_url)
+        let art = {
+            title: title,
+            artist_name: artist_name,
+            image_url: image_url
+        }
+
+    })
+
 }
