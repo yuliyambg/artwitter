@@ -71,8 +71,12 @@ function artFormSubmission(){
             },
             body: JSON.stringify(art)
         })
-            .then(resp => console.log(resp))
-
+            // .then(resp => console.log(resp))
+            .then(resp => resp.json())
+            .then(art => {
+                let a = new Art(art.title, art.artist_name, art.image_url)
+                a.renderArt();
+            })
     })
 
 }
