@@ -16,6 +16,7 @@ function fetchArts(){
           // console.log("rails obj", art)
           let a = new Art(art.title, art.artist_name, art.image_url)
           // console.log("js obj", art)
+          a.renderArt();
         }
       })
 
