@@ -17,8 +17,8 @@ function fetchArts(){
         // console.log(arts)
         for (const art of arts){
           // console.log("rails obj", art)
-          let a = new Art(art.title, art.artist_name, art.image_url)
-          // console.log("js obj", art)
+          let a = new Art(art.id, art.title, art.artist_name, art.image_url)
+          // console.log("id js obj", art)
           a.renderArt();
         }
       })
@@ -74,9 +74,14 @@ function artFormSubmission(){
             // .then(resp => console.log(resp))
             .then(resp => resp.json())
             .then(art => {
-                let a = new Art(art.title, art.artist_name, art.image_url)
+                let a = new Art(art.id, art.title, art.artist_name, art.image_url)
                 a.renderArt();
             })
     })
 
 }
+
+function addComment(){
+
+}
+
