@@ -4,9 +4,12 @@ const BASE_URL = "http://127.0.0.1:3000"
 // whether or not the form is showing
 let addArt = false;
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
   fetchArts();
   showForm();
+
 });
 
 // read - fetch arts index
@@ -20,6 +23,7 @@ function fetchArts(){
           let a = new Art(art.id, art.title, art.artist_name, art.image_url)
           // console.log("id js obj", art)
           a.renderArt();
+
         }
       })
 
@@ -57,7 +61,7 @@ function artFormSubmission(){
         let title = document.getElementById("title").value
         let artist_name =document.getElementById("artist_name").value
         let image_url = document.getElementById("image_url").value
-// console.log(title, artist_name, image_url)
+
         let art = {
             title: title,
             artist_name: artist_name,
@@ -81,7 +85,24 @@ function artFormSubmission(){
 
 }
 
-function addComment(){
+
+
+function showArt(art){
+    const emptyCon = document.querySelector("#container")
+    emptyCon.innerHTML = ""
+
+    const title = art.getAttribute('data-title');
+    const artist = art.getAttribute('data-artist');
+    const image_url = art.getAttribute('data-image-url');
+    const comments = art.getAttribute('data-comments');
+
+    emptyCon.innerHTML = `<div>
+            <h1>Title: ${title}</h1>
+            <h1>Author: ${artist}</h1>
+            <img src= ${image_url} />
+          
+            
+        </div>`
 
 }
 
