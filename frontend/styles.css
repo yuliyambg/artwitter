@@ -1,0 +1,7 @@
+.art-title {
+    cursor: pointer;
+}
+
+.art-title:hover {
+    color: blue;
+}

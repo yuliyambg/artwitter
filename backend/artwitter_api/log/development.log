@@ -2365,3 +2365,340 @@ Processing by CommentsController#index as */*
 Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.6ms | Allocations: 1633)
 
 
+Started GET "/arts" for 127.0.0.1 at 2021-02-28 22:38:12 -0500
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (4.3ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 48ms (Views: 15.5ms | ActiveRecord: 13.0ms | Allocations: 6330)
+
+
+Started GET "/arts/1/comments" for 127.0.0.1 at 2021-02-28 22:38:24 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"1"}
+  [1m[36mArt Load (0.6ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 1]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 52ms (Views: 17.5ms | ActiveRecord: 5.0ms | Allocations: 9926)
+
+
+Started GET "/arts/3/comments" for 127.0.0.1 at 2021-02-28 22:38:55 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"3"}
+  [1m[36mArt Load (0.9ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 3]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 1.3ms | Allocations: 1530)
+
+
+Started POST "/arts/3/comments" for 127.0.0.1 at 2021-02-28 22:39:10 -0500
+Processing by CommentsController#create as JSON
+  Parameters: {"content"=>"Looks great!", "name"=>"Yuliya Marinova", "art_id"=>"3", "comment"=>{"content"=>"Looks great!", "name"=>"Yuliya Marinova", "art_id"=>"3"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[36mArt Load (0.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[36mComment Create (0.9ms)[0m  [1m[32mINSERT INTO "comments" ("content", "name", "art_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "Looks great!"], ["name", "Yuliya Marinova"], ["art_id", 3], ["created_at", "2021-03-01 03:39:10.665421"], ["updated_at", "2021-03-01 03:39:10.665421"]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+Completed 201 Created in 10ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 4144)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-02-28 22:51:15 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (16.6ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 41ms (Views: 18.1ms | ActiveRecord: 16.6ms | Allocations: 1696)
+
+
+Started GET "/arts/1/comments" for 127.0.0.1 at 2021-02-28 22:51:18 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"1"}
+  [1m[36mArt Load (0.5ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (26.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 1]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 128ms (Views: 35.7ms | ActiveRecord: 27.2ms | Allocations: 3653)
+
+
+Started GET "/arts/3/comments" for 127.0.0.1 at 2021-02-28 22:51:27 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"3"}
+  [1m[36mArt Load (0.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (32.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 3]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 43ms (Views: 6.5ms | ActiveRecord: 33.2ms | Allocations: 1632)
+
+
+Started POST "/arts/3/comments" for 127.0.0.1 at 2021-02-28 22:51:56 -0500
+Processing by CommentsController#create as JSON
+  Parameters: {"content"=>"Great Fox!", "name"=>"Yuliya M.", "art_id"=>"3", "comment"=>{"content"=>"Great Fox!", "name"=>"Yuliya M.", "art_id"=>"3"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[36mArt Load (0.5ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[36mComment Create (16.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "name", "art_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "Great Fox!"], ["name", "Yuliya M."], ["art_id", 3], ["created_at", "2021-03-01 03:51:56.185969"], ["updated_at", "2021-03-01 03:51:56.185969"]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (24.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+Completed 201 Created in 117ms (Views: 1.8ms | ActiveRecord: 41.2ms | Allocations: 3750)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-02-28 22:56:19 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (14.8ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 42ms (Views: 21.1ms | ActiveRecord: 14.8ms | Allocations: 2362)
+
+
+Started GET "/arts/1/comments" for 127.0.0.1 at 2021-02-28 22:56:21 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"1"}
+  [1m[36mArt Load (0.7ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 1]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 90ms (Views: 21.5ms | ActiveRecord: 26.9ms | Allocations: 11463)
+
+
+Started POST "/arts/1/comments" for 127.0.0.1 at 2021-02-28 22:56:51 -0500
+Processing by CommentsController#create as JSON
+  Parameters: {"content"=>"Nice artwork!", "name"=>"Y.M.", "art_id"=>"1", "comment"=>{"content"=>"Nice artwork!", "name"=>"Y.M.", "art_id"=>"1"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[36mArt Load (1.5ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[36mComment Create (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("content", "name", "art_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "Nice artwork!"], ["name", "Y.M."], ["art_id", 1], ["created_at", "2021-03-01 03:56:51.048392"], ["updated_at", "2021-03-01 03:56:51.048392"]]
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:21:in `create'
+Completed 201 Created in 36ms (Views: 1.6ms | ActiveRecord: 7.6ms | Allocations: 3964)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-02-28 23:00:57 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (6.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 5.9ms | ActiveRecord: 6.4ms | Allocations: 1647)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 17:52:30 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (38.7ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 260ms (Views: 189.7ms | ActiveRecord: 38.7ms | Allocations: 1685)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 17:52:32 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (0.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 33ms (Views: 31.7ms | ActiveRecord: 0.4ms | Allocations: 1610)
+
+
+Started GET "/arts/1/comments" for 127.0.0.1 at 2021-03-06 17:53:04 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"1"}
+  [1m[36mArt Load (1.7ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (51.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 1]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 385ms (Views: 209.2ms | ActiveRecord: 56.3ms | Allocations: 3772)
+
+
+Started GET "/arts/2/comments" for 127.0.0.1 at 2021-03-06 17:55:22 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"2"}
+  [1m[36mArt Load (0.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 2]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 38ms (Views: 20.7ms | ActiveRecord: 1.5ms | Allocations: 1633)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 17:56:01 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (1.0ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 61ms (Views: 56.8ms | ActiveRecord: 1.0ms | Allocations: 1610)
+
+
+Started GET "/arts/1/comments" for 127.0.0.1 at 2021-03-06 19:07:10 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"1"}
+  [1m[36mArt Load (0.9ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 1]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 80ms (Views: 40.1ms | ActiveRecord: 2.2ms | Allocations: 3844)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:07:38 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (7.1ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 38ms (Views: 27.8ms | ActiveRecord: 7.1ms | Allocations: 1612)
+
+
+Started GET "/arts/1/comments" for 127.0.0.1 at 2021-03-06 19:13:08 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"1"}
+  [1m[36mArt Load (0.8ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 1]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 57ms (Views: 40.9ms | ActiveRecord: 1.6ms | Allocations: 3741)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:33:42 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (1.5ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 82ms (Views: 61.8ms | ActiveRecord: 1.5ms | Allocations: 1684)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:34:23 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (3.0ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 43ms (Views: 39.7ms | ActiveRecord: 3.0ms | Allocations: 1610)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:34:25 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (0.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 40ms (Views: 36.7ms | ActiveRecord: 0.4ms | Allocations: 1610)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:34:47 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (0.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 41ms (Views: 38.9ms | ActiveRecord: 0.4ms | Allocations: 1610)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:35:13 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (0.7ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 33ms (Views: 30.1ms | ActiveRecord: 0.7ms | Allocations: 1610)
+
+
+Started GET "/arts/1/comments" for 127.0.0.1 at 2021-03-06 19:35:18 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"1"}
+  [1m[36mArt Load (0.5ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:35:19 -0500
+  [1m[36mComment Load (9.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 1]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 173ms (Views: 101.4ms | ActiveRecord: 12.6ms | Allocations: 4077)
+
+
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (1.8ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 37ms (Views: 32.4ms | ActiveRecord: 1.8ms | Allocations: 1684)
+
+
+Started GET "/arts/1/comments" for 127.0.0.1 at 2021-03-06 19:35:20 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"1"}
+  [1m[36mArt Load (2.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 1]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 84ms (Views: 66.2ms | ActiveRecord: 3.6ms | Allocations: 3771)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:35:21 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (0.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.4ms | Allocations: 1610)
+
+
+Started GET "/arts/1/comments" for 127.0.0.1 at 2021-03-06 19:35:25 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"1"}
+  [1m[36mArt Load (1.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (2.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 1]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 42ms (Views: 31.0ms | ActiveRecord: 3.7ms | Allocations: 3741)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:35:25 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (1.0ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 1.0ms | Allocations: 1610)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:36:13 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (0.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 19ms (Views: 18.7ms | ActiveRecord: 0.4ms | Allocations: 1610)
+
+
+Started GET "/arts/1/comments" for 127.0.0.1 at 2021-03-06 19:36:15 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"1"}
+  [1m[36mArt Load (0.4ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 1]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 43ms (Views: 33.3ms | ActiveRecord: 0.9ms | Allocations: 3741)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:47:46 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (1.9ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 28ms (Views: 25.3ms | ActiveRecord: 1.9ms | Allocations: 1684)
+
+
+Started GET "/arts/1/comments" for 127.0.0.1 at 2021-03-06 19:47:47 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"art_id"=>"1"}
+  [1m[36mArt Load (1.0ms)[0m  [1m[34mSELECT "arts".* FROM "arts" WHERE "arts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:54:in `set_art'
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."art_id" = $1[0m  [["art_id", 1]]
+  ↳ app/controllers/comments_controller.rb:9:in `index'
+Completed 200 OK in 52ms (Views: 43.6ms | ActiveRecord: 2.4ms | Allocations: 3772)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:48:03 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (0.9ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.9ms | Allocations: 1610)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:48:39 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (3.8ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 30ms (Views: 22.2ms | ActiveRecord: 3.8ms | Allocations: 1610)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:49:47 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (0.7ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 28ms (Views: 26.5ms | ActiveRecord: 0.7ms | Allocations: 1610)
+
+
+Started GET "/arts" for 127.0.0.1 at 2021-03-06 19:51:41 -0500
+Processing by ArtsController#index as */*
+  [1m[36mArt Load (0.5ms)[0m  [1m[34mSELECT "arts".* FROM "arts"[0m
+  ↳ app/controllers/arts_controller.rb:8:in `index'
+Completed 200 OK in 80ms (Views: 68.3ms | ActiveRecord: 0.5ms | Allocations: 1613)
+
+
