@@ -1,53 +1,39 @@
+// DOM Selectors
+const DOMSelectors = {
+    form: document.getElementById("form"),
+    addArtBtn: document.querySelector("#add-art"),
+    emptyCon:  document.querySelector("#container")
+}
 
+
+
+// base url for
 const BASE_URL = "http://127.0.0.1:3000"
-
-// whether or not the form is showing
-let addArt = false;
-
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchArts();
   showForm();
-  // goBack()
-
 });
+
 
 // read - fetch arts index
 function fetchArts(){
   fetch(`${BASE_URL}/arts`)
       .then(resp => resp.json())
       .then(arts => {
-        // console.log(arts)
         for (const art of arts){
-          // console.log("rails obj", art)
           let a = new Art(art.id, art.title, art.artist_name, art.image_url, art.comments)
-          // console.log("id js obj", art)
           a.renderArt();
-
         }
       })
-
   }
-
-  // create - create new art
-// once form is submitted => fetch post to backend
 
 
 function showForm() {
-    // add art button
-    const addArtBtn = document.querySelector("#add-art");
-    // form to create art
-    const form = document.getElementById("form")
-
     // shows art form on click
-    addArtBtn.addEventListener("click", () => {
-        addArt = !addArt;
-
-        if (addArt) {
-            form.style.display = "block";
-        } else {
-            form.style.display = "none";
-        }
+    DOMSelectors.addArtBtn.addEventListener("click", () => {
+        DOMSelectors.form.style.display = "block";
+        DOMSelectors.addArtBtn.style.display="none";
     });
 
     artFormSubmission();
@@ -55,8 +41,8 @@ function showForm() {
 
 function artFormSubmission(){
     //grabbing information from the form
-    const form = document.getElementById("form")
-    form.addEventListener("submit", (e) =>{
+
+    DOMSelectors.form.addEventListener("submit", (e) =>{
         e.preventDefault()
         let title = document.getElementById("title").value
         let artist_name =document.getElementById("artist_name").value
@@ -67,6 +53,7 @@ function artFormSubmission(){
             artist_name: artist_name,
             image_url: image_url
         }
+
         fetch(`${BASE_URL}/arts`, {
             method: "POST",
             headers: {
@@ -80,6 +67,10 @@ function artFormSubmission(){
                 let a = new Art(art.id, art.title, art.artist_name, art.image_url)
                 a.renderArt();
             })
+
+
+        DOMSelectors.form.style.display = "none";
+        DOMSelectors.addArtBtn.style.display="block";
     })
 
 }
@@ -88,8 +79,7 @@ function artFormSubmission(){
 
 function showArt(art){
 
-    const emptyCon = document.querySelector("#container")
-    emptyCon.innerHTML = ""
+    DOMSelectors.emptyCon.innerHTML = ""
 
     const id = art.getAttribute('data-id');
     const title = art.getAttribute('data-title');
@@ -98,9 +88,9 @@ function showArt(art){
 
 
     // TODO: refactor the html partial
-    emptyCon.innerHTML = `
+    DOMSelectors.emptyCon.innerHTML = `
 
-         <div>
+         <div class="container">
             <input type="button" id="go-back" value="Go Back" onclick="goBack()"/>
             <h1>Title: ${title}</h1>
             <h1>Author: ${artist}</h1>
@@ -168,8 +158,6 @@ function clearFields(){
 }
 
 function goBack(){
-    const emptyCon = document.querySelector("#container")
-
     window.location.reload(false);
     fetchArts();
 }

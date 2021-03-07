@@ -7,12 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Artwitter</title>
     <link href="styles.css" rel="stylesheet" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <div id="container">
 <h1 id="main-title">Artwitter</h1>
-    <button class="button" id="add-art" type="button" name="button">Add artwork</button>
+    <div class="center-btn">
+        <button class="button" id="add-art" type="button" name="button" class="center">Add artwork</button>
+    </div>
 
     <div id="form" style="display: none;">
         <form id="new-art-form">
@@ -35,5 +41,6 @@
 <script src="index.js"></script>
 <script src="src/art.js"></script>
 <script src="src/comment.js"></script>
+
 </body>
 </html>

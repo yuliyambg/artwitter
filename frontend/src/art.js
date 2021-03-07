@@ -14,9 +14,11 @@ class Art{
 
     // TODO: refactor passing of data to individual page
     artsDiv.innerHTML +=
-        ` <div class="artpiece">
+        ` 
+        <div class="artpiece">
         <h3 style="cursor: pointer;" class="art-title" data-id="${this.id}" data-title="${this.title}"  data-artist="${this.artist_name}"  data-image-url="${this.image_url}"
-          onclick="showArt(this)">Title: ${this.title} - Artist: ${this.artist_name}</h3>
+          onclick="showArt(this)">Title: ${this.title}</h3>
+          <h3>Artist: ${this.artist_name}</h3>
         <div><img src= ${this.image_url} /></div>
         </div> `
   }

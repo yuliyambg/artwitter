@@ -5,3 +5,54 @@
 .art-title:hover {
     color: blue;
 }
+#art-card-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+#main-title {
+    text-align: center;
+    color: dimgrey;
+    font-size: 3em;
+    text-shadow: 3px 2px #f0c442;
+}
+
+#form {
+    display: block;
+    text-align: center;
+}
+
+label {
+    font-size: 1.2em;
+    color: dimgrey;
+}
+
+input[type=text] {
+    width: 20%;
+    padding: 5px 10px;
+    margin: 8px 0;
+    border-radius: 3px;
+    font-size: 0.8em;
+}
+
+.button {
+    padding: 10px 20px;
+    border: 2px solid #f0c442;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    left: 50%;
+
+}
+
+.center-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container {
+    margin-top: 2rem;
+    max-width: 1100px;
+}
