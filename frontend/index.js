@@ -4,9 +4,11 @@ const BASE_URL = "http://127.0.0.1:3000"
 // whether or not the form is showing
 let addArt = false;
 
+
 document.addEventListener("DOMContentLoaded", () => {
   fetchArts();
   showForm();
+  // goBack()
 
 });
 
@@ -85,6 +87,7 @@ function artFormSubmission(){
 
 
 function showArt(art){
+
     const emptyCon = document.querySelector("#container")
     emptyCon.innerHTML = ""
 
@@ -95,7 +98,10 @@ function showArt(art){
 
 
     // TODO: refactor the html partial
-    emptyCon.innerHTML = `<div>
+    emptyCon.innerHTML = `
+
+         <div>
+            <input type="button" id="go-back" value="Go Back" onclick="goBack()"/>
             <h1>Title: ${title}</h1>
             <h1>Author: ${artist}</h1>
             <img src= ${image_url} alt=""/>
@@ -109,7 +115,7 @@ function showArt(art){
         </form>
         <hr />
         <ul id="comments"></ul>
-    </div> </div>`
+        </div>`
 
     getComments(id);
 
@@ -159,4 +165,11 @@ function addComment(event, id){
 function clearFields(){
     document.querySelector('#name').value = ""
     document.querySelector('#content').value = ""
+}
+
+function goBack(){
+    const emptyCon = document.querySelector("#container")
+
+    window.location.reload(false);
+    fetchArts();
 }
