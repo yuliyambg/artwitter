@@ -12,7 +12,6 @@ class Art{
   renderArt() {
     let artsDiv = document.getElementById("art-card-container")
 
-    // TODO: refactor passing of data to individual page
     artsDiv.innerHTML +=
         ` 
         <div class="artpiece">

@@ -76,7 +76,6 @@ function artFormSubmission(){
 }
 
 
-
 function showArt(art){
 
     DOMSelectors.emptyCon.innerHTML = ""
@@ -87,7 +86,6 @@ function showArt(art){
     const image_url = art.getAttribute('data-image-url');
 
 
-    // TODO: refactor the html partial
     DOMSelectors.emptyCon.innerHTML = `
 
          <div class="container">
@@ -121,7 +119,6 @@ function getComments(id){
             }
         })
 }
-
 
 
 function addComment(event, id){
