@@ -1,16 +1,11 @@
 class ArtsController < ApplicationController
-  before_action :set_art, only: [:show, :update, :destroy]
+#   before_action :set_art, only: [:show, :update, :destroy]
 
   # GET /arts
   def index
     @arts = Art.all
 
     render json: @arts
-  end
-
-  # GET /arts/1
-  def show
-    render json: @art
   end
 
   # POST /arts
@@ -24,25 +19,11 @@ class ArtsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /arts/1
-  def update
-    if @art.update(art_params)
-      render json: @art
-    else
-      render json: @art.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /arts/1
-  def destroy
-    @art.destroy
-  end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_art
-      @art = Art.find(params[:id])
-    end
+#     def set_art
+#       @art = Art.find(params[:id])
+#     end
 
     # Only allow a trusted parameter "white list" through.
     def art_params
