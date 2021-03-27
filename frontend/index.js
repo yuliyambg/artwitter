@@ -2,7 +2,8 @@
 const DOMSelectors = {
     form: document.getElementById("form"),
     addArtBtn: document.querySelector("#add-art"),
-    emptyCon:  document.querySelector("#container")
+    emptyCon:  document.querySelector("#container"),
+    emptyArtCardContainer: document.querySelector("#art-card-container")
 }
 
 
@@ -15,6 +16,28 @@ document.addEventListener("DOMContentLoaded", () => {
   showForm();
 });
 
+const inputEl = document.getElementById('user-input')
+const search = document.getElementById('search')
+
+search.addEventListener('click', function (){
+    const inputValue = inputEl.value
+    DOMSelectors.emptyArtCardContainer.innerHTML = ""
+
+    console.log(inputValue)
+
+        fetch(`${BASE_URL}/arts`)
+            .then(resp => resp.json())
+            .then(arts => {
+               const search_result = arts.filter(art => art.title.includes(inputValue))
+                console.log(search_result)
+                for (const art of search_result){
+                    let a = new Art(art.id, art.title, art.artist_name, art.image_url, art.comments)
+                    a.renderArt();
+               }
+            })
+
+
+})
 
 // read - fetch arts index
 function fetchArts(){
